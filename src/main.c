@@ -1,3 +1,16 @@
 #include <stdlib.h>
 
-int main(int argc, const char* argv[]) { return EXIT_SUCCESS; }
+#include "chunk.h"
+#include "debug.h"
+
+int main(int argc, const char* argv[]) {
+  Chunk chunk;
+
+  initChunk(&chunk);
+  writeChunk(&chunk, OP_RETURN);
+
+  disassembleChunk(&chunk, "test chunk");
+  freeChunk(&chunk);
+
+  return EXIT_SUCCESS;
+}
